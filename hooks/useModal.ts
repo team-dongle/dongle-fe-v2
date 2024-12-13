@@ -6,10 +6,8 @@ export function useModal() {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleOutsideClick);
-    window.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
-      window.addEventListener("keydown", handleKeyDown);
     };
   }, [visible]);
 
@@ -21,13 +19,6 @@ export function useModal() {
     setVisible(false);
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Escape") {
-      setVisible(false);
-    } else {
-      e.stopPropagation();
-    }
-  };
   const handleOutsideClick = (e: Event) => {
     const current = modalRef.current;
     if (visible && current && !current.contains(e.target as Node))

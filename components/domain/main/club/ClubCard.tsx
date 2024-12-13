@@ -15,7 +15,7 @@ const ClubCard = ({ name, category, isRecruiting }: Props) => {
       </div>
       <span
         className={clsx(
-          "flex h-7 w-16 items-center justify-center rounded-lg text-xs font-semibold",
+          "flex h-9 w-20 items-center justify-center rounded-lg text-sm font-bold",
           isRecruiting
             ? "bg-primary-400 text-white"
             : "bg-zinc-100 text-zinc-300",

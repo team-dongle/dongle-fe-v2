@@ -3,16 +3,16 @@ import FilterIcon from "@/assets/icons/filter-icon.svg";
 import { useModal } from "@/hooks/useModal";
 import ModalOverlay from "@/components/common/modal/ModalOverlay";
 import Modal from "@/components/common/modal/Modal";
-import { filterOption } from "@/types/filter";
-import Toggle from "./ui/Toggle";
-import CategorySelection from "./ui/CategorySelection";
+import { FilterOptions } from "@/types/filter";
+import Toggle from "./Toggle";
+import CategorySelection from "./CategorySelection";
 
 const Filter = ({
-  filterOption,
+  filterOptions,
   setCategory,
   setIsRecruiting,
 }: {
-  filterOption: filterOption;
+  filterOptions: FilterOptions;
   setCategory: (category: string | []) => void;
   setIsRecruiting: (isRecruiting: boolean | null) => void;
 }) => {
@@ -25,7 +25,7 @@ const Filter = ({
   return (
     <>
       <button
-        className="flex flex-row items-center rounded-xl border border-primary-400 px-4 text-primary-400"
+        className="flex flex-row items-center gap-2 rounded-xl border border-primary-400 px-4 text-primary-400"
         onClick={openModal}
       >
         <FilterIcon />
@@ -48,7 +48,7 @@ const Filter = ({
                 </span>
                 <div className="mt-6 flex flex-row gap-7">
                   <CategorySelection
-                    filterOption={filterOption}
+                    filterOptions={filterOptions}
                     setCategory={setCategory}
                   />
                 </div>
@@ -57,7 +57,7 @@ const Filter = ({
                 </h1>
                 <Toggle
                   name={"모집 여부"}
-                  isRecruiting={filterOption.isRecruiting}
+                  isRecruiting={filterOptions.isRecruiting}
                   setIsRecruiting={setIsRecruiting}
                 />
               </section>

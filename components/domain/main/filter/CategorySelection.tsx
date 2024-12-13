@@ -3,13 +3,13 @@ import CheckIcon from "@/assets/icons/check-icon.svg";
 
 import React from "react";
 import clsx from "clsx";
-import { filterOption } from "@/types/filter";
+import { FilterOptions } from "@/types/filter";
 
 const CategorySelection = ({
-  filterOption,
+  filterOptions,
   setCategory,
 }: {
-  filterOption: filterOption;
+  filterOptions: FilterOptions;
   setCategory: (category: string) => void;
 }) => {
   return categoryList.map((category) => {
@@ -24,10 +24,10 @@ const CategorySelection = ({
           onClick={() => setCategory(category)}
           className={clsx(
             "flex h-4 w-4 items-center justify-center rounded border border-zinc-200",
-            filterOption.category?.includes(category) ? "bg-primary-400" : "",
+            filterOptions.category?.includes(category) ? "bg-primary-400" : "",
           )}
         >
-          {filterOption.category?.includes(category) ? <CheckIcon /> : null}
+          {filterOptions.category?.includes(category) ? <CheckIcon /> : null}
         </label>
         <span className="zinc-700">{category}</span>
       </div>

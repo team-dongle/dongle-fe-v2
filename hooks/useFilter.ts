@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { filterOption } from "@/types/filter";
+import { FilterOptions } from "@/types/filter";
 
 export function useFilter() {
-  const [filterOption, setFilterOption] = useState<filterOption>({
+  const [filterOptions, setFilterOptions] = useState<FilterOptions>({
     category: [],
     isRecruiting: null,
   });
 
   const setIsRecruiting = (isRecruiting: boolean | null) => {
-    setFilterOption((prev) => ({
+    setFilterOptions((prev) => ({
       ...prev,
       isRecruiting: isRecruiting,
     }));
@@ -16,9 +16,9 @@ export function useFilter() {
 
   const setCategory = (category: string | []) => {
     if (category.length == 0) {
-      setFilterOption((prev) => ({ ...prev, category: [] }));
+      setFilterOptions((prev) => ({ ...prev, category: [] }));
     } else {
-      setFilterOption((prev) =>
+      setFilterOptions((prev) =>
         prev.category.includes(category)
           ? { ...prev, category: prev.category.filter((e) => e != category) }
           : { ...prev, category: [...prev.category, category] },
@@ -27,8 +27,7 @@ export function useFilter() {
   };
 
   return {
-    filterOption,
-    setFilterOption,
+    filterOptions,
     setCategory,
     setIsRecruiting,
   };

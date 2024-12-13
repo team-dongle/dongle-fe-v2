@@ -11,33 +11,33 @@ interface Props {
   count: number;
   clubs: ClubType[];
 }
-const MainServiceComponent = ({ count, clubs }: Props) => {
-  const { filterOption, setCategory, setIsRecruiting } = useFilter();
+const ClubList = ({ count, clubs }: Props) => {
+  const { filterOptions, setCategory, setIsRecruiting } = useFilter();
   const [inputValue, setInputValue] = useState("");
   const [filteredClubList, setFilteredClubList] = useState(clubs);
 
   useEffect(() => {
     const updatedList = clubs.filter(
       (e) =>
-        ((filterOption.category?.length == 0 ||
-          filterOption.category?.includes(e.category.name)) &&
+        ((filterOptions.category?.length == 0 ||
+          filterOptions.category?.includes(e.category.name)) &&
           //카테고리가 null 일 때 전체 출력
-          (filterOption.isRecruiting == null ||
-            filterOption.isRecruiting == e.isRecruiting) &&
+          (filterOptions.isRecruiting == null ||
+            filterOptions.isRecruiting == e.isRecruiting) &&
           //모집 여부가 null 일 때 전체 출력
           e.name.toLowerCase().includes(inputValue.toLowerCase())) ||
         inputValue.toLowerCase().includes(e.category.name.toLowerCase()),
       //이름은 한 글자라도 일치하면 출력, 분과는 완전 일치 시 출력
     );
     setFilteredClubList(updatedList);
-  }, [filterOption.category, filterOption.isRecruiting, inputValue]);
+  }, [filterOptions.category, filterOptions.isRecruiting, inputValue]);
 
   return (
     <div className="flex h-auto w-full flex-col gap-12 pb-32">
       <section className="flex flex-row items-center justify-between">
         <span className="text-zinc-400">{`총 ${count}개의 동아리가 있습니다.`}</span>
         <div className="flex flex-row gap-4">
-          <div className="flex w-96 flex-row rounded-xl border-2 border-zinc-300 px-4 py-3">
+          <div className="flex w-96 flex-row rounded-xl border border-zinc-300 px-4 py-3">
             <input
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setInputValue(e.target.value)
@@ -51,7 +51,7 @@ const MainServiceComponent = ({ count, clubs }: Props) => {
             <SearchIcon />
           </div>
           <Filter
-            filterOption={filterOption}
+            filterOptions={filterOptions}
             setCategory={setCategory}
             setIsRecruiting={setIsRecruiting}
           />
@@ -73,4 +73,4 @@ const MainServiceComponent = ({ count, clubs }: Props) => {
   );
 };
 
-export default MainServiceComponent;
+export default ClubList;

@@ -1,6 +1,6 @@
 import CategoryType from "@/constants/category";
 
-export interface filterOption {
+export interface FilterOptions {
   category: CategoryType[];
   isRecruiting: boolean | null;
 }

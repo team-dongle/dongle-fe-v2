@@ -2,21 +2,22 @@
 
 import { BannerType } from "@/types/banner";
 import { useKeenSlider } from "keen-slider/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ChevronLeft from "@/assets/icons/chevron-left.svg";
 import ChevronRight from "@/assets/icons/chevron-right.svg";
+import { useRouter } from "next/navigation";
+import Skeleton from "@/components/common/Skeleton";
 
+//lazy loading 빼고 로딩이나 스켈레톤이미지
 const Banner = ({ banners }: { banners: BannerType[] }) => {
-  const [loaded, setLoaded] = useState<boolean[]>([]);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  if (banners.length <= 0) return;
 
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
-      animationEnded(s) {
-        setCurrentSlide(s.track.details.rel);
-      },
       created() {
-        setLoaded([true]);
+        setIsLoading(false);
       },
       loop: true,
       initial: 0,
@@ -53,25 +54,26 @@ const Banner = ({ banners }: { banners: BannerType[] }) => {
     ],
   );
 
-  useEffect(() => {
-    const new_loaded = [...loaded];
-    new_loaded[currentSlide] = true;
-    setLoaded(new_loaded);
-  }, [currentSlide]);
-
   return (
-    <div className="relative">
+    <div className="relative h-48 w-full">
       <div ref={sliderRef} className="keen-slider">
         {banners.map((banner, idx) => (
-          <div key={idx} className="keen-slider__slide lazy__slide">
-            <img
-              className="rounded-xl"
-              src={loaded[idx] ? banner.imageUrl : undefined}
-            />
+          <div
+            key={idx}
+            className={`keen-slider__slide number-slide${idx + 1}`}
+          >
+            {isLoading && <Skeleton w={"full"} h={48} />}
+            {!isLoading && (
+              <img
+                className="cursor-pointer rounded-xl"
+                src={banner.imageUrl}
+                onClick={() => banner.href && router.push(banner.href)}
+              />
+            )}
           </div>
         ))}
       </div>
-      {loaded && instanceRef.current && (
+      {instanceRef.current && (
         <>
           <button
             className="absolute left-4 top-1/2 px-3"
