@@ -8,6 +8,15 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        "skeleton-gradient": "skeleton 3s ease infinite",
+      },
+      keyframes: {
+        skeleton: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
