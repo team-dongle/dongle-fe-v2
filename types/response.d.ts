@@ -9,6 +9,10 @@ export interface ClubListResponse extends GeneralResponse {
   result: { count: number; rows: ClubType[] };
 }
 
+export interface ClubDetailResponse extends GeneralResponse {
+  result: ClubType;
+}
+
 export interface BannerListResponse extends GeneralResponse {
   result: { count: number; rows: BannerType[] };
 }

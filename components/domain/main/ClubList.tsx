@@ -6,6 +6,7 @@ import SearchIcon from "@/assets/icons/search-icon.svg";
 import ClubCard from "./club/ClubCard";
 import { useFilter } from "@/hooks/useFilter";
 import Filter from "@/components/domain/main/filter/Filter";
+import Link from "next/link";
 
 interface Props {
   count: number;
@@ -60,12 +61,14 @@ const ClubList = ({ count, clubs }: Props) => {
       <ul className="grid grid-cols-3">
         {filteredClubList.map((club) => {
           return (
-            <ClubCard
-              key={club._id}
-              name={club.name}
-              category={club.category.name}
-              isRecruiting={club.isRecruiting}
-            />
+            <Link key={club.name} href={`${club._id}`}>
+              <ClubCard
+                key={club._id}
+                name={club.name}
+                category={club.category.name}
+                isRecruiting={club.isRecruiting}
+              />
+            </Link>
           );
         })}
       </ul>
