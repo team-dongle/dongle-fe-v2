@@ -19,7 +19,7 @@ export default function Information({
   return (
     <>
       <section className="flex w-full flex-row items-center justify-between gap-2">
-        <div className="flex flex-row items-center justify-between gap-8">
+        <div className="flex flex-row items-center justify-between gap-4">
           <div className="h-32 w-32 overflow-hidden rounded-full bg-zinc-200">
             {logo && <Image alt="" src={logo} width={128} height={128} />}
           </div>

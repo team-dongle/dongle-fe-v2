@@ -20,12 +20,10 @@ export default async function Layout({
   const id = (await params).id;
 
   return (
-    <div className="flex flex-col gap-12">
+    <>
       {children}
-      <div>
-        <Tabs id={id} />
-        {tabs}
-      </div>
-    </div>
+      <Tabs id={id} />
+      {tabs}
+    </>
   );
 }

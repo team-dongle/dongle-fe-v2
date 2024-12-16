@@ -1,6 +1,6 @@
 import { getClubDetail } from "@/apis/club";
 import { formatDate } from "@/utils/format";
-import Information from "@/components/domain/detail/introduction/information";
+import Information from "@/components/domain/detail/Information";
 
 export default async function Default({
   params,
