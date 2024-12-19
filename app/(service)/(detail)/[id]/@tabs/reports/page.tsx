@@ -14,7 +14,7 @@ export default async function Page({
     <div className="grid grid-cols-3 place-items-center gap-y-6">
       {reports.map((report) => {
         return (
-          <Link key={report._id} href={`/${id}/feed/${report._id}`}>
+          <Link key={report._id} href={`/${id}/reports/${report._id}`}>
             <div className="h-64 w-64 rounded-2xl bg-zinc-300">
               <img
                 src={report.images[0].url}

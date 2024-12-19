@@ -1,4 +1,4 @@
-import Page from "./introduction/page";
+import Page from "./info/page";
 
 export default async function Default({
   params,

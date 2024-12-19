@@ -24,7 +24,9 @@ export default async function Page({
             </h1>
             <span className="text-lg text-zinc-500">{createdAt}</span>
           </div>
-          <p className="text-lg text-zinc-700">{result.content}</p>
+          <p className="whitespace-pre-wrap text-lg text-zinc-700">
+            {result.content}
+          </p>
           <button />
         </div>
       </Modal>

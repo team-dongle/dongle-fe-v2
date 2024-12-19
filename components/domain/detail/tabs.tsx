@@ -12,11 +12,11 @@ export default function Tabs({ id }: { id: string }) {
       <Link
         className={clsx(
           "h-12 w-full border-b-4 text-center text-xl font-bold",
-          segment == "introduction" || !segment
+          segment == "info" || !segment
             ? "border-b-primary-400 text-primary-400"
             : "border-b-zinc-200 text-zinc-200",
         )}
-        href={`/${id}/introduction`}
+        href={`/${id}/info`}
         replace
       >
         동아리 정보
@@ -24,11 +24,11 @@ export default function Tabs({ id }: { id: string }) {
       <Link
         className={clsx(
           "h-12 w-full border-b-4 text-center text-xl font-bold",
-          segment == "feed"
+          segment == "reports"
             ? "border-b-primary-400 text-primary-400"
             : "border-b-zinc-200 text-zinc-200",
         )}
-        href={`/${id}/feed`}
+        href={`/${id}/reports`}
         replace
       >
         동아리 활동보고서

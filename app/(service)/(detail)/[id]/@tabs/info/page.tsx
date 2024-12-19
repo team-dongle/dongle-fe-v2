@@ -15,7 +15,9 @@ export default async function Page({
       <Skeleton w={"full"} h={"full"}>
         {result.thumbnail && <Carousel Thumbnails={result.thumbnail} />}
       </Skeleton>
-      <p className="w-full text-xl text-zinc-700">{result.detail}</p>
+      <p className="w-full whitespace-pre-wrap text-xl text-zinc-700">
+        {result.detail}
+      </p>
     </div>
   );
 }

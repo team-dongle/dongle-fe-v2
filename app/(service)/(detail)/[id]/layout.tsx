@@ -1,4 +1,4 @@
-import Tabs from "@/components/domain/detail/tabs";
+import Tabs from "@/components/domain/detail/Tabs";
 
 export default async function Layout({
   children,
