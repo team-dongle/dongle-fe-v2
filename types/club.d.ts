@@ -1,4 +1,4 @@
-import { ThumbnailType } from "@/types/file";
+import { ImageType, ThumbnailType } from "@/types/file";
 
 export interface ClubType {
   _id: number;
@@ -14,4 +14,11 @@ export interface ClubType {
   logo?: string;
   category: { name: string };
   owner: { name: string };
+}
+
+export interface ClubReportType {
+  _id: number;
+  title: string;
+  images: ImageType[];
+  clubId: number;
 }
