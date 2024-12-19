@@ -3,7 +3,7 @@ import ServiceLogo from "@/components/common/ServiceLogo";
 
 const Header = () => {
   return (
-    <header className="fixed left-0 top-0 z-50 h-28 w-full border-b border-b-zinc-100 bg-white">
+    <header className="fixed left-0 top-0 z-50 h-24 w-full border-b border-b-zinc-100 bg-white">
       <div className="m-[0_auto] flex h-full max-w-[896px] flex-row items-center justify-between">
         <ServiceLogo type="full" />
         <nav className="flex h-full w-auto flex-row items-center justify-start gap-3">

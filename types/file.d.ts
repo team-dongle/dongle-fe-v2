@@ -5,3 +5,7 @@ export interface ThumbnailType {
   url: string;
   alt?: string;
 }
+
+export interface ImageType {
+  url: string;
+}
