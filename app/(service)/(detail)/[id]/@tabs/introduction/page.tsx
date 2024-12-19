@@ -1,5 +1,6 @@
 import { getClubDetail } from "@/apis/club";
-import Introduction from "@/components/domain/detail/introduction/Introduction";
+import Carousel from "@/components/common/Carousel";
+import Skeleton from "@/components/common/Skeleton";
 
 export default async function Page({
   params,
@@ -9,5 +10,12 @@ export default async function Page({
   const id = (await params).id;
   const { result } = await getClubDetail(id);
 
-  return <Introduction thumbnail={result.thumbnail} detail={result.detail} />;
+  return (
+    <div className="flex flex-col gap-9">
+      <Skeleton w={"full"} h={"full"}>
+        {result.thumbnail && <Carousel Thumbnails={result.thumbnail} />}
+      </Skeleton>
+      <p className="w-full text-xl text-zinc-700">{result.detail}</p>
+    </div>
+  );
 }

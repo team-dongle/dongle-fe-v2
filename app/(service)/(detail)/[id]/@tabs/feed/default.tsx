@@ -1,6 +1,6 @@
-import Page from "./introduction/page";
+import Page from "./page";
 
-export default async function Default({
+export default function Default({
   params,
 }: {
   params: Promise<{ id: string }>;
